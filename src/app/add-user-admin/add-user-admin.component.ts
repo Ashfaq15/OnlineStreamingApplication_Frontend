@@ -99,7 +99,5 @@ export class AddUserAdminComponent {
     this.route.navigate(['/adminPage']);
   }
 
-  gitAdd(){
-    
-  }
+
 }
