@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Style Navbar</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            height: max-content;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+            border-bottom: 1vh solid grey;
+        }
+
+        .navbar-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-center {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        #search-bar {
+            width: 50%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .navbar-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-container video {
+            width: 90%;
+            /* border: 2px solid red; */
+            height: auto;
+            border-radius: 2px;
+        }
+
+        .video-title {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .video-controls {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .rating-stars {
+            margin-top: 1%;
+            display: flex;
+            gap: 5px;
+        }
+
+        .rating-stars i {
+            font-size: 15px;
+            color: white;
+        }
+
+        .rating-stars i.active {
+            color: gold;
+        }
+
+
+        .comment-input {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 300px;
+            overflow-y: scroll;
+            scrollbar-width: none; 
+            -ms-overflow-style: none;  
+        }
+
+        .comments-section::-webkit-scrollbar { 
+            display: none; 
+        }
+
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        .icon {
+            color: white;
+            cursor: pointer;
+        }
+
+        .coloring {
+            background-color: black;
+            color: white;
+        }
+
+        .sidebar-wrapper {
+            height: auto;
+        }
+
+        .list-group-flush {
+            padding-left: 10px;
+        }
+
+        .coloring {
+            background-color: black;
+            color: white;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            margin-right: 20px;
+            /* padding: 10%; */
+        }
+        .fas:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#" style="font-size: 1.7rem;">CloudFlicks</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" (click)="logout()">
+                       <i class="fas fa-user"></i>
+                        {{userName}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="divider"></div>
+    <div class="d-flex">
+        <div class="colo " id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+              <!-- <button class="btn btn-dark p-3 ml-3 mt-5 coloring" ><i class="fas fa-home"></i> Home</button> -->
+              <!-- <button class="btn btn-dark p-3 ml-3 mt-5 coloring" ><i class="fas fa-history"></i>
+                History</button>
+              <button class="btn btn-dark p-3 ml-3 mt-5 coloring" (click)="favouriteButton()"><i class="fas fa-heart"></i>
+                Favourite</button>
+              <button class="btn btn-dark p-3 ml-3 mt-5 coloring" (click)="likeButton()"><i class="fas fa-thumbs-up"></i>
+                Liked Videos</button> -->
+              <!-- <a class="colo list-group-item list-group-item-action">Home</a>
+              <a class="colo list-group-item list-group-item-action">History</a>
+              <a class="colo list-group-item list-group-item-action">Favourite List</a>
+              <a class="colo list-group-item list-group-item-action">Liked Videos</a> -->
+            </div>
+          </div>
+
+        <div class="container content">
+            <div class="video-container">
+                <video controls>
+                    <source src="{{videoUrl}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-title">
+                    {{videoName}}
+                </div>
+            </div>
+            <div class="video-controls">
+                <!-- <button id="like-button" class="btn btn-primary" (click)="likeButton()"><i class="fas fa-thumbs-up"></i> Like</button> -->
+                 <i class="fas fa-thumbs-up" (click)="likeButton()"></i>
+                
+                 <i class="fas fa-heart" (click)="favouriteButton()"></i>
+                <!-- <button class="btn btn-success" (click)="favouriteButton()"><i class="fas fa-star"></i> Add to Favorites</button> -->
+
+                <!-- <div class="rating-stars" id="rating-stars">
+                    <i class="fas fa-star" data-rating="1" (click)="rateVideo(1)" [ngClass]="{'active': currentRating >= 1}"></i>
+                    <i class="fas fa-star" data-rating="2" (click)="rateVideo(2)" [ngClass]="{'active': currentRating >= 2}"></i>
+                    <i class="fas fa-star" data-rating="3" (click)="rateVideo(3)" [ngClass]="{'active': currentRating >= 3}"></i>
+                    <i class="fas fa-star" data-rating="4" (click)="rateVideo(4)" [ngClass]="{'active': currentRating >= 4}"></i>
+                    <i class="fas fa-star" data-rating="5" (click)="rateVideo(5)" [ngClass]="{'active': currentRating >= 5}"></i>
+                </div> -->
+                <!-- <input type="text" [value]="currentRating" class="form-control" style="width: 50px; text-align: center;" readonly> -->
+
+            </div>
+            <div class="rating-stars" id="rating-stars">
+                <i class="fas fa-star" data-rating="1" (click)="rateVideo(1)" [ngClass]="{'active': currentRating >= 1}"></i>
+                <i class="fas fa-star" data-rating="2" (click)="rateVideo(2)" [ngClass]="{'active': currentRating >= 2}"></i>
+                <i class="fas fa-star" data-rating="3" (click)="rateVideo(3)" [ngClass]="{'active': currentRating >= 3}"></i>
+                <i class="fas fa-star" data-rating="4" (click)="rateVideo(4)" [ngClass]="{'active': currentRating >= 4}"></i>
+                <i class="fas fa-star" data-rating="5" (click)="rateVideo(5)" [ngClass]="{'active': currentRating >= 5}"></i>
+            </div>
+            <div class="comment-input">
+                <input type="text" id="comment-text" class="form-control" placeholder="Add a comment" name="commentName" [(ngModel)]="commentName" autocomplete="off">
+                <button id="comment-button" class="btn btn-secondary mt-2" (click)="commentButton()"><i class="fas fa-comment"></i> Comment</button>
+            </div>
+            <div class="comments-section">
+                <h3>Comments</h3>
+                @for (item of videoComments; track $index) {
+                    <div class="comment">
+                        <p><strong>{{item.userName}} :</strong> {{item.commentName}}</p>
+                        @if (userId == item.userId) {
+                            <span class="icon"><i class="fas fa-trash" (click)="deleteComment(item.commentId,item.userId)"></i></span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

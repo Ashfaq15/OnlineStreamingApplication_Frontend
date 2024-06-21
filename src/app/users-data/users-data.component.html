@@ -1,0 +1,106 @@
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" >Streaming Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" (click)="overview()">Home <span class="sr-only">(current)</span></a>
+            </li>
+           
+            
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar and Content -->
+<div class="d-flex">
+    <div id="sidebar" class="bg-dark text-white p-3">
+        <h4>Dashboard</h4>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" (click)="overview()" >Overview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" (click)="users()">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" (click)="videos()">Videos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" (click)="comments()">Comments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" (click)="likes()">Likes</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <h1 class="h2">Dashboard Overview</h1>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Users</h5>
+                        <p class="card-text" id="total-users">{{totalUsers}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Videos</h5>
+                        <p class="card-text" id="total-videos">{{totalVideos}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Views</h5>
+                        <p class="card-text" id="total-views">Loading...</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+       
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Users Data</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Email</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Placeholder rows, populate with backend data -->
+                               @for (item of user; track $index) {
+                                <tr>
+                                    <th scope="row">{{item.userId}}</th>
+                                    <td>{{item.userName}}</td>
+                                    <td>{{item.userEmail}}</td>
+                                    
+                                </tr>
+                               }
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
+

@@ -1,0 +1,76 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<div >
+  <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#" style="font-size: 1.7rem;"><strong>CloudFlicks</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0 mx-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Videos" aria-label="Search"
+               style="width: 400px;" name="searchingFor" [(ngModel)]="searchingFor" autocomplete="off">
+        <button class="btn btn-danger my-2 my-sm-0" type="button" (click)="searchVideos()">Search</button>
+        <button class="btn btn-secondary my-2 my-sm-0 ml-2" type="button" (click)="startVoiceRecognition()">
+          <i class="fas fa-microphone"></i>
+        </button>
+      </form>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false" (click)="logout()">
+            
+             <i class="fas fa-user"></i>
+             {{userName}}
+
+          </a>
+          
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="divider"></div>
+  <div class="d-flex ">
+    <div class="colo " id="sidebar-wrapper">
+      <div class="list-group list-group-flush">
+        <button class="btn btn-dark p-3 ml-3 mt-5 coloring" (click)="homeButton()"><i class="fas fa-home"></i> Home</button>
+        <button class="btn btn-dark p-3 ml-3 mt-5 coloring" (click)="historyButton()"><i class="fas fa-history"></i>
+          History</button>
+        <button class="btn btn-dark p-3 ml-3 mt-5 coloring" (click)="favouriteButton()"><i class="fas fa-heart"></i>
+          Favourite</button>
+        <button class="btn btn-dark p-3 ml-3 mt-5 coloring" (click)="likeButton()"><i class="fas fa-thumbs-up"></i>
+          Liked Videos</button>
+        <!-- <a class="colo list-group-item list-group-item-action">Home</a>
+        <a class="colo list-group-item list-group-item-action">History</a>
+        <a class="colo list-group-item list-group-item-action">Favourite List</a>
+        <a class="colo list-group-item list-group-item-action">Liked Videos</a> -->
+      </div>
+    </div>
+
+    <div class="container-fluid ">
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let item of videosData; let i = index">
+            <div class="card mb-4 boxes" >
+              <div class="embed-responsive embed-responsive-16by9">
+                <video class="embed-responsive-item" controls>
+                  <source [src]="item.videoUrl" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-body" (click)="goToPage6(item.videoUrl,item.videoName,item.videoId)">
+                <h5 class="card-title">{{ item.videoName }}</h5>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

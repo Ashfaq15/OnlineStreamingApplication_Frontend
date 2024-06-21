@@ -1,0 +1,82 @@
+/* Global styles */
+body {
+    background-color: black; /* Black background for the entire page */
+    color: #ffffff; /* White text color */
+    
+    
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #000000; 
+  }
+  
+  /* Sidebar styles */
+  #sidebar-wrapper {
+    background-color: #000000; 
+    color: #ffffff; 
+    
+   
+
+  }
+  
+  /* Page Content styles */
+  .container-fluid {
+    background-color: #000000;
+    color: #ffffff; 
+    min-height: 100vh;
+    max-height: max-content;
+  }
+  
+  /* Card styles */
+  .card {
+   
+    background-color: #333333; 
+    color: #ffffff; 
+    /* border: 1px solid #444444;  */
+  }
+  
+  .card-body {
+    background-color: black;
+    /* background-color: #333333;  */
+    color: #ffffff; 
+  }
+  
+  /* Navbar styles */
+.navbar {
+    background-color: #000000; /* Black background */
+  }
+  
+  /* Sidebar styles */
+  #sidebar-wrapper {
+    background-color: #000000;
+    color: #000000; 
+  }
+  
+  /* Sidebar item styles */
+  .colo.list-group-item {
+    color: #000000; /* Black text color */
+  }
+  
+
+  .divider{
+    background-color: white;
+    height: 0.1vh;
+    /* height: 1vh; */
+  }
+
+  .coloring{
+    background-color: black;
+    color: white;
+  }
+
+
+
+  .boxes:hover{
+    cursor: pointer;
+  }
+
+
